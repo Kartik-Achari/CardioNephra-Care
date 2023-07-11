@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CardioNephra Care - Your Health Matters</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sticky-footer/">
+
+    <style>
+        html,
+        body {
+                                  
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(to right,#0694c6,#8bffff,#0694c6);
+            font-family: 'Open Sans';
+        }
+
+        button{
+            background-color: rgb(46, 26, 101);
+            border: none;
+            border-radius: 20pt;
+            cursor: pointer;
+            padding: 15px 35px;
+            color: white;
+            font-weight: bolder;
+            font-size: 18px;
+        }
+   </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-primary"
+        style="background-color: #0694c6 !important; height: 80px; ">
+        <a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename = 'logo1.png') }} " height="60px"
+                width="275px"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <center>
+                <h2 style=" color:rgb(0, 0, 0); transform:translateX(285px);padding-left:115px; font-size: 40px;">CardioNephra Care - Your
+                    Health Matters</h2>
+            </center>
+        </div>
+    </nav>
+
+    <br><br><br><br>
+
+    <main>
+        <div class="container-fluid" style="margin-bottom: 20px; padding-top: 20px; ">
+            <div class="container">           
+                <h2 align="center" style="font-weight:bold">Test Your Heart/Kidney Health</h2> <br>               
+                <center>
+                    <img src="{{ url_for('static', filename = 'logo.png') }} " height="275px"
+                    width="300px">
+                </center><br><br>               
+                <center>
+                    <form action="/login">
+                        <button type="submit">Login </button>
+                    </form>
+                </center><br>                  
+                <center>
+                    <form action="/signup">
+                        <button type="submit">Sign Up</button>
+                    </form>
+                </center>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Heart Disease Prediction</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sticky-footer/">
+
+    <style>
+        html,
+        body {
+            background: linear-gradient(to right,#0694c6,#8bffff,#0694c6);
+            display:flex;
+            flex-direction: column;
+            font-family: 'Open Sans';
+        }
+        label{
+            font-size: large;
+             font-family: sans-serif; 
+             font-weight: bold;
+             margin-top: 10px;
+        }
+
+        p{
+            margin-right: 2%;
+            font-weight: bolder;
+            font-size: 250%;
+            color: rgb(46, 26, 101);
+        }
+
+        button{
+            background-color: rgb(46, 26, 101);
+            border: none;
+            border-radius: 20pt;
+            cursor: pointer;
+            height: 38px;
+            margin-left: 30px;
+            color: white;
+        }
+
+        option{
+            font-weight: bold;
+        }
+
+    </style>
+    <script defer src="static/heart1.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-primary"
+        style="background-color: #0694c6 !important; height: 80px; ">
+        <a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename = 'logo1.png') }} " height="60px"
+                width="275px"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <center>
+                <h2 style=" color:rgb(0, 0, 0); transform:translateX(250px);font-size: 40px; padding-left:137px;">CardioNephra Care - Your
+                    Health Matters</h2>
+            </center>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active" style="font-size: 26px; font-weight: bolder;">
+                    <a class="nav-link" style="color: rgb(255, 0, 0)" href="{{ url_for('heartPage') }}">Heart </a>
+                </li>
+                <li class="nav-item active" style="font-size: 26px; font-weight: bolder;">
+                    <a href="{{ url_for('homePage') }}" style="color: rgb(0, 0, 0)" class="nav-link">|  Home</a>
+                </li>                
+            </ul>
+        </div>
+    </nav>
+    <br><br><br><br><br>
+    <main>
+        <div class="row" style="margin-bottom: 175px;">
+            <div class="col-md-2"></div>
+            <div class="col-md-8"></br></br>
+                <center>
+                    <div>
+                        <p><img class="img1" src="static/logo.png" style="width:65px; height:60px;" padding-right="30px" >     Test Your Heart Health</p>
+                     </div>
+                </center>
+                <div class="card card-body" style="border: 1px solid black; border-radius: 1em; margin-top: 10px;">
+                    <form class="form-horizontal" action="/predictHeart" method="POST">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>Age</label>
+                                <div class="form-group">
+                                    <input style="border: 1px solid black;" id="age_h" class="form-control" type="number" min="1" max="100" name="age" placeholder="Age" required>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label>Gender (Male|female)</label>
+                                <div class="form-group">
+                                    <select style="border: 1px solid black;" id="gender_h" class="form-control" type="text" name="sex" onchange="getData_h1(this)" required>
+                                        <option value="" disabled selected style="color:red; font-weight: bolder; font-size: 18px;">Gender</option>
+                                        <option value="1">Male</option>
+                                        <option value="0">Female</option>
+                                    </select> 
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label>Chest Pain Type</label>
+                                <div class="form-group">
+                                    <select style="border: 1px solid black;" id="cp" class="form-control" type="text" name="cp" onchange="getData_h2(this)" required>
+                                        <option value="" disabled selected style="color:red; font-weight: bolder; font-size: 18px;">Chest Pain type</option>
+                                        <option id="a" value="0">Asymptomatic</option>
+                                        <option value="1">Atypical Angina</option>
+                                        <option value="2">Non-Anginal Pain</option>
+                                        <option value="3">Typical Angina</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>Resting Blood Pressure (mm Hg)</label>
+                                <div class="form-group">
+                                    <input style="border: 1px solid black;" id="trestbps" class="form-control" type="number"
+                                        name="trestbps" placeholder="Resting blood pressure (mm Hg)" min="85" max="220" required>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label>Serum Cholestoral (mg/dl)</label>
+                                <div class="form-group">
+                                    <input style="border: 1px solid black;" id="chol" class="form-control" type="number" name="chol"
+                                        placeholder="Serum Cholestoral (mg/dl)" min="100" max="420" required>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label>Fasting Blood Sugar>120mg/dl (Yes|No) </label>
+                                <div class="form-group">
+                                    <select style="border: 1px solid black;" id="fbs" class="form-control" type="text" name="fbs" onchange="getData_h3(this)" required>
+                                        <option value="" disabled selected style="color:red; font-weight: bolder; font-size: 18px;">Fasting Blood Sugar</option>
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>Resting ECG</label>
+                                <div class="form-group">
+                                    <select style="border: 1px solid black;" id="restecg" class="form-control" type="text" name="restecg" onchange="getData_h4(this)" required>
+                                        <option value="" disabled selected style="color:red; font-weight: bolder; font-size: 18px;">Resting ECG</option>
+                                        <option value="0">Normal</option>
+                                        <option value="1">Having ST-T</option>
+                                        <option value="2">Hypertrophy</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label>Maximum Heart Rate</label>
+                                <div class="form-group">
+                                    <input style="border: 1px solid black;" id="thalach" class="form-control" type="number"
+                                        name="thalach" placeholder="Maximum Heart Rate" min="60" max="210" required>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label>Exercise Induced Angina (Yes|No)</label>
+                                <div class="form-group">
+                                    <select style="border: 1px solid black;" id="exang" class="form-control" type="text" name="exang" onchange="getData_h5(this)" required>
+                                        <option value="" disabled selected style="color:red; font-weight: bolder; font-size: 18px;">Exercise Induced Angina</option>
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>ST depression induced by exercise</label>
+                                <div class="form-group">
+                                    <input style="border: 1px solid black;" id="oldpeak" class="form-control" type="number" step="0.1"
+                                        name="oldpeak" placeholder="ST depression induced by exercise" min="0" max="6" required>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label>The Slope exercise ST segment</label>
+                                <div class="form-group">
+                                    <select style="border: 1px solid black;" id="slope" class="form-control" type="text" name="slope" onchange="getData_h6(this)" required>
+                                        <option value="" disabled selected style="color:red; font-weight: bolder; font-size: 18px;">The Slope exercise ST segment</option>
+                                        <option value="1">Unsloping</option>
+                                        <option value="2">Flat</option>
+                                        <option value="3">Downsloping</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label>Number of major colored vessels (0-3)</label>
+                                <div class="form-group">
+                                    <select style="border: 1px solid black;" id="ca" class="form-control" type="text" name="ca"onchange="getData_h7(this)" required>
+                                        <option value="" disabled selected style="color:red; font-weight:bolder; font-size: 18px;">Number of major colored vessel</option>
+                                        <option value="0">Zero</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4">
+                                <label>Thalassemia Report</label>
+                                <div class="form-group">
+                                    <select style="border: 1px solid black;" id="thal" class="form-control" type="text" name="thal" onchange="getData_h8(this)" required>
+                                        <option value="" disabled selected style="color:red; font-weight: bolder; font-size: 18px;">Thalassemia Report</option>
+                                        <option value="3">Normal</option>
+                                        <option value="6">Fixed Defect</option>
+                                        <option value="7">Reversible Defect</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4"></div>
+                        </div>
+                        <a href="{{ url_for('predictHeartPage') }}">
+                            <input style="background-color: rgb(46, 26, 101); border-radius: 20pt; font-weight: bolder; font-size: 18px;" onclick="getData_h()" type="submit" class="btn btn-info btn-block" value="Predict"></a>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </fieldset>
+    </main>
+</body>
+</html>

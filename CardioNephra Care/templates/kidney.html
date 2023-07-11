@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Kidney Disease Prediction</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sticky-footer/">
+
+    <style>
+        html,
+        body {
+            background: linear-gradient(to right,#0694c6,#8bffff,#0694c6);
+            display: flex;
+            flex-direction: column;
+            font-family: 'Open Sans';
+        }
+        label{
+            font-size: large;
+             font-family: sans-serif; 
+             font-weight: bold;
+             margin-top: 10px;
+        }
+
+        p{
+            margin-left: 30%;
+            font-weight: bolder;
+            font-size: 250%;
+            color: rgb(46, 26, 101);
+        }
+        
+        button{
+            background-color: rgb(46, 26, 101);
+            border: none;
+            border-radius: 20pt;
+            cursor: pointer;
+            height: 40px;
+            width:60px;
+            margin-left: 30px;
+            color: white;
+        }
+
+        option{
+            font-weight: bold;
+        }
+
+        
+    </style>
+    <script defer src="static/kidney1.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-primary"
+        style="background-color:#0694c6!important; height: 80px; ">
+        <a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename = 'logo1.png') }} " height="60px"
+                width="275px"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <center>
+                <h2 style=" color:rgb(0, 0, 0); transform:translateX(250px);font-size: 40px; padding-left:137px;">CardioNephra Care - Your
+                    Health Matters</h2>
+            </center>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active" style="font-size: 26px; font-weight: bolder;">
+                    <a class="nav-link" href="{{ url_for('kidneyPage') }}" style="color: rgb(255, 0, 0)">Kidney</a>
+                </li>
+                <li class="nav-item active" style="font-size: 26px; font-weight: bolder;">
+                    <a href="{{ url_for('homePage') }}" class="nav-link" style="color: rgb(0, 0, 0)"> | Home</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <br><br><br><br>
+    <main>
+        <div class="row" style="margin-bottom: 125px;">
+            <div class="col-md-2"></div>
+            <div class="col-md-8"></br></br></br>
+                    <div>
+                        <p><img class="img1" src="static/logo.png" style="width:65px; height:60px;" padding-right="30px" >        Test Your Kidney Health</p>
+                     </div>
+                <div class="card card-body" style="border: 1px solid black;border-radius: 1em; margin-top: 10px; ">
+                    <form class="form-horizontal" action="/predictKidney" method="POST">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>Age</label>
+                                <div class="form-group">
+                                    <input style="border: 1px solid black;" id="age" class="form-control" type="number" name="age" min="1" max="100" placeholder="Age" required>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label>Blood Pressure (mm/Hg)</label>
+                                <div class="form-group">
+                                    <input style="border: 1px solid black;" id="bp" class="form-control" type="number" name="bp" min="50" max="180" placeholder="Blood Pressure" required>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label>Albumin</label>
+                                <div class="form-group">
+                                    <select style="border: 1px solid black;" id="al" class="form-control" type="number" name="al" onchange="getData_k1(this)" required>
+                                    <option value="" disabled selected style="color:red; font-weight: bolder; font-size: 18px;">Albumin</option>
+                                    <option value="0">Zero</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                    <option value="4">Four</option>
+                                    <option value="5">Five</option>
+                                </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>Sugar</label>
+                                <div class="form-group">
+                                    <select style="border: 1px solid black;" id="su" class="form-control" type="number" name="su" onchange="getData_k2(this)" required>
+                                    <option value="" disabled selected style="color:red; font-weight: bolder; font-size: 18px;">Sugar</option>
+                                    <option value="0">Zero</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                    <option value="4">Four</option>
+                                    <option value="5">Five</option>
+                                </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label>Red Blood Cells (Normal|Abnormal)</label>
+                                <div class="form-group">
+                                    <select style="border: 1px solid black;" id="rbc" class="form-control" type="text" name="rbc" onchange="getData_k3(this)" required>
+                                        <option value="" disabled selected style="color:red; font-weight: bolder; font-size: 18px;">Red Blood Cells</option>
+                                        <option value="0">Normal</option>
+                                        <option value="1">Abnormal</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label>Puss Cells (Normal|Abnormal)</label>
+                                <div class="form-group">
+                                    <select style="border: 1px solid black;" id="pc" class="form-control" type="text" name="pc" onchange="getData_k4(this)" required>
+                                        <option value="" disabled selected style="color:red; font-weight: bolder; font-size: 18px;">Puss Cells</option>
+                                        <option value="0">Normal</option>
+                                        <option value="1">Abnormal</option>
+                                    </select>  
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>Puss Cell Clumps (Present|Not-Present)</label>
+                                <div class="form-group">
+                                    <select style="border: 1px solid black;" id="pcc" class="form-control" type="text" name="pcc" onchange="getData_k5(this)" required>
+                                        <option value="" disabled selected style="color:red; font-weight: bolder; font-size: 18px;">Puss Cell Clumps</option>
+                                        <option value="1">Present</option>
+                                        <option value="0">Not-Present</option>
+                                    </select>    
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label>Bacteria (Present|Not-Presnt)</label>
+                                <div class="form-group">
+                                    <select style="border: 1px solid black;" id="ba" class="form-control" type="text" name="ba" onchange="getData_k6(this)" required>
+                                        <option value="" disabled selected style="color:red; font-weight: bolder; font-size: 18px;">Bacteria</option>
+                                        <option value="1">Present</option>
+                                        <option value="0">Not-Present</option>
+                                    </select>     
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label>Blood Glucose Random (mgs/dl)</label>
+                                <div class="form-group">
+                                    <input style="border: 1px solid black;" id="bgr" class="form-control" type="number" min="70" max="500" name="bgr" placeholder="Blood Glucose Random" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>Blood Urea (mgs/dl)</label>
+                                <div class="form-group">
+                                    <input style="border: 1px solid black;" id="bu" class="form-control" type="number" min="10" max="400" name="bu" placeholder="Blood Urea" required>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label>Serum Creatinine (mgs/dl)</label>
+                                <div class="form-group">
+                                    <input style="border: 1px solid black;" id="sc" class="form-control" type="number" name="sc" min="0.1" max="3.0" step="0.1" placeholder="Serum Creatinine" required>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label>Potassium (mEq/L)</label>
+                                <div class="form-group">
+                                    <input style="border: 1px solid black;" id="pot" class="form-control" type="number" name="pot" min="0" max="10" step="0.1" placeholder="Potassium" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>White Blood Cells Count (cells/cmm)</label>
+                                <div class="form-group">
+                                    <input style="border: 1px solid black;" id="wc" class="form-control" type="number" name="wc" min="4000" max="27000" placeholder="White Blood Cells Count" required>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label>Hypertension (Yes|No)</label>
+                                <div class="form-group">
+                                    <select style="border: 1px solid black;" id="htn" class="form-control" type="text" name="htn" onchange="getData_k7(this)" required>
+                                        <option value="" disabled selected style="color:red; font-weight:bolder">Hypertension</option>
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label>Diabetes Mellitus (Yes|No)</label>
+                                <div class="form-group">
+                                    <select style="border: 1px solid black;" id="dm" class="form-control" type="text" name="dm" onchange="getData_k8(this)" required>
+                                        <option value="" disabled selected style="color:red; font-weight:bolder">Diabetes Mellitus</option>
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>Coronary Artery Disease (Yes|NO)</label>
+                                <div class="form-group">
+                                    <select style="border: 1px solid black;" id="cad" class="form-control" type="text" name="cad" onchange="getData_k9(this)" required>
+                                        <option value="" disabled selected style="color:red; font-weight:bolder">Coronary Artery Disease</option>
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label>Pedal Edema (Yes|No)</label>
+                                <div class="form-group">
+                                    <select style="border: 1px solid black;" id="pe" class="form-control" type="text" name="pe" onchange="getData_k10(this)" required>
+                                        <option value="" disabled selected style="color:red; font-weight:bolder">Pedal Edema</option>
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label>Anemia (Yes|No)</label>
+                                <div class="form-group">
+                                    <select style="border: 1px solid black;" id="ane" class="form-control" type="text" name="ane" onchange="getData_k11(this)" required>
+                                        <option value="" disabled selected style="color:red; font-weight:bolder">Anemia</option>
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="submit" style="background-color: rgb(46, 26, 101);border-radius: 20pt; font-weight: bolder; font-size: 18px;" onclick="getData_k()" class="btn btn-info btn-block" value="Predict">
+                    </form>
+                </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CardioNephra Care - Your Health Matters</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sticky-footer/">
+
+    <style>
+        html,
+        body {
+                                  
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(to right,#0694c6,#8bffff,#0694c6);
+            font-family: 'Open Sans';
+        }
+        @media (min-width: 768px) {
+        .h-md-100 { height: 100vh; }
+        }
+
+        button{
+            background-color: rgb(46, 26, 101);
+            border: none;
+            border-radius: 20pt;
+            cursor: pointer;
+            padding: 15px 35px;
+            color: white;
+        }
+
+        ul button{
+            background-color: rgb(46, 26, 101);
+            border: none;
+            border-radius: 20pt;
+            cursor: pointer;
+            padding: 6px 15px;
+            color: white;
+
+        }
+
+        ul,p{
+            font-weight: bold;
+            font-size: large;
+        }
+
+        .alert {
+        padding: 20px;
+        background-color: rgb(46, 26, 101);
+        color: white;
+        width: 25%;
+        border-radius: 10px;
+        }
+
+        .closebtn {
+        margin-left: 15px;
+        color: white;
+        font-weight: bolder;
+        float: right;
+        font-size: 22px;
+        line-height: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+        margin-top: 10px;
+        }
+
+        .closebtn:hover {
+         color: black;
+        }
+
+   </style>
+   <script src="static/home.js"></script>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-primary"
+        style="background-color: #0694c6 !important; height: 80px; ">
+        <a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename = 'logo1.png') }} " height="60px"
+                width="275px"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <center>
+                <h2 style=" color:rgb(0, 0, 0); transform:translateX(250px);font-size: 40px; padding-left:130px;">CardioNephra Care - Your
+                    Health Matters</h2>
+            </center>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active" style="font-size: 25px; text-decoration: underline; font-weight:lighter; ">
+                    <form action="{{ url_for('frontPage') }}">
+                        <button id="logout" type="submit">Log Out</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    </br>
+</br>
+</br>
+</br>
+<center>
+    <div class="alert">
+        <span class="closebtn" onclick="this.parentElement.style.display='none'; style">&times;</span> 
+        <h3>Login Succesfull</h3> 
+      </div>
+</center>
+<br>
+    
+    <h1 align="center" style="color: rgb(46, 26, 101); font-weight: bolder;">Welcome {{name}}</h1> <br>
+    <main>
+        <div class="container-fluid" style="margin-bottom: 20px; padding-top: 20px; padding-right: 580px;">
+            <div class="container">
+                <div class="card card-body"
+                    style="border: 5px solid black;background-color:#0699c9; box-shadow: 0 0 10px black; border-radius: 2em; width: 1700px;">
+                    <h2 align="center" style="text-decoration: underline; font-weight: bold;">Welcome to CardioNephra Care</h2>
+
+                    <p align="center">CardioNephra Care is a Heart/Kidney Health Testing Website. </p>
+                    <br>
+                    <br>
+                    <h4 align="center" style="text-decoration: underline;font-weight: bold;">Information and Resources</h4>
+                    <br>
+        <div class="d-md-flex h-md-100 align-items-center">
+            <div class="col-md-6 p-0 h-md-100"
+            style=" box-shadow: 0 0 5px black; background: linear-gradient(to right,#3becec,#0694c6);border-radius: 2em;">
+                <div class="text-black d-md-flex align-items-center h-100 p-5 text-center justify-content-center">
+                    <div class="logoarea pt-5 pb-5">
+                        <h3 style="text-decoration: underline; margin-top: 120px; font-weight: bold;">Heart Disease</h3>
+                    </br>
+                            <p align="left">Heart disease, such as coronary heart disease, heart attack, congestive heart failure,
+                                and congenital heart disease, is the leading cause of death for men and women in the
+                                India, Prevention includes quitting smoking, lowering cholesterol, controlling high blood
+                                pressure, maintaining a healthy weight, and exercising.</p>
+                            <h4>Symptoms</h4>
+                            <ul align="left">
+                                <li>Shortness of breath</li>
+                                <li>Pain in the neck, jaw, throat, upper abdomen or back</li>
+                                <li>Pain, numbness, weakness or coldness in your legs or arms if the blood vessels in
+                                    those parts of your body are narrowed</li>
+                                <li>Chest pain, chest tightness, chest pressure and chest discomfort (angina)</li>
+                            </ul>
+                            <br><strong>Click here to:</strong> 
+                            <a href="https://www.cdc.gov/heartdisease/about.htm" target="_blank" style="color:#0c0770">Learn More</a>
+                        </br></br>
+                        <iframe width="400" height="220" src="https://www.youtube.com/embed/qJq5hA4pnOk"
+                        title="YouTube video player" frameborder="2"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                    </br></br>
+                        <fieldset style="width: fit-content;">
+                                <div class="card card-body" style=" border-radius: 1em;background:linear-gradient(to left,white,smokewhite); height: 200px;">
+                                    <form class="form-horizontal1" action="{{ url_for('heartPage') }}" method="POST">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <strong style="color:red; margin-right: 50px;">Patient Name</strong>
+                                                <div class="form-group">
+                                                    <input style="border: 1px solid black; margin-left: 29px; width: 150%" id="patient_name_h" pattern="[A-Za-z]+" class="form-control" type="text" minlength="3" maxlength="20" name="name" 
+                                                        title="Please Enter The Valid Name of Min. 3 Characters." placeholder="Patient Name" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <strong style="margin-left:125px; color:red;">Ref. Doctor</strong>
+                                                <div class="form-group">
+                                                    <input style="border: 1px solid black; margin-left: 120px;  width: 150%" id="referred_doc_h" class="form-control" type="text" minlength="3" maxlength="25" name="doctor"
+                                                        title="Please Enter The Valid Name of Min. 3 Characters." placeholder="Referred Doctor" required>
+                                                </div>
+                                            </div>
+                                                <div>
+                                                    <form action="{{ url_for('heartPage') }}">
+                                                        <button type="submit" onclick="getData_home1()" style="margin-left:260px; margin-top: 20px;" >Test Your Heart Health </button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                        </fieldset>
+                    </br>
+                </br>
+            </br>
+        </br>
+    </br>
+
+                    </div>
+                </div>
+            </div>
+            <div class="d-md-flex h-md-100  align-items-center">
+                <div class="col-md-6 p-0 h-md-100"
+                style=" box-shadow: 0 0 5px black; background: linear-gradient(to right,#0694c6,#3becec); border-radius: 2em; width: 1650px;">
+                    <div class="text-black d-md-flex align-items-center h-100 p-5 text-center justify-content-center">
+                        <div class="logoarea pt-10 pb-13">
+                            <h3 style="text-decoration: underline; font-weight: bold;">Chronic kidney disease</h3>
+                        </br>
+                                <p align="left">Chronic kidney disease, also called chronic kidney failure, describes the gradual loss of
+                                    kidney function. Your kidneys filter wastes and excess fluids from your blood, which are
+                                    then excreted in your urine. When chronic kidney disease reaches an advanced stage,
+                                    dangerous levels of fluid, electrolytes and wastes can build up in your body.</p>
+                                <h4>Symptoms</h4>
+                                <ul align="left">
+                                    <li>Nausea</li>
+                                    <li>Vomiting</li>
+                                    <li>Fatigue and weakness</li>
+                                    <li>Muscle twitches and cramps</li>
+                                    <li>Loss of appetite</li>
+                                </ul>
+                                <br><strong>Click here to:</strong>
+                                <a href="https://www.niddk.nih.gov/health-information/kidney-disease/chronic-kidney-disease-ckd#:~:text=Chronic%20kidney%20disease%20(CKD)%20means,family%20history%20of%20kidney%20failure." target="_blank" style="color:#0c0770"  >Learn
+                                    More</a>
+                            </br></br>
+                                <iframe width="400" height="220" src="https://www.youtube.com/embed/JjcqY95HR1o"
+                                    title="YouTube video player" frameborder="2"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen></iframe>
+                                </br></br>
+                                <fieldset style="width: fit-content;">
+                                        <div class="card card-body" style=" border-radius: 1em;background:linear-gradient(to left,white,smokewhite); height: 200px;">
+                                            <form class="form-horizontal1" action="{{ url_for('kidneyPage') }}" method="POST">
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <strong style="color:red; margin-right: 50px;">Patient Name</strong>
+                                                        <div class="form-group">
+                                                            <input style="border: 1px solid black; margin-left: 29px; width: 150%" id="patient_name_k" class="form-control" type="text" minlength="3" maxlength="25" name="name" 
+                                                                title="Please Enter The Valid Name of Min. 3 Characters." placeholder="Patient Name" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <strong style="margin-left:125px; color:red;">Ref. Doctor</strong>
+                                                        <div class="form-group">
+                                                            <input style="border: 1px solid black; margin-left: 120px;  width: 150%" id="referred_doc_k" class="form-control" type="text" minlength="3" maxlength="25" name="doctor"
+                                                                 title="Please Enter The Valid Name of Min. 3 Characters."   placeholder="Referred Doctor" required>
+                                                        </div>
+                                                    </div>
+                                                        <div>
+                                                                <button type="submit" onclick="getData_home2()" style="margin-left:260px; margin-top: 20px;">Test Your Kidney Health </button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                </fieldset>
+                        </div>
+                    </div>
+                </div>
+    </main>
+</body>
+</html>
+
+
+
+

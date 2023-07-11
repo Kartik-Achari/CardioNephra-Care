@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>CardioNephra Care - Your Health Matters</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sticky-footer/">
+    <style>
+        html,
+        body {
+                                  
+            display:flex;
+            flex-direction: column;
+            background: linear-gradient(to right,#0694c6,#8bffff,#0694c6);
+            font-family: 'Open Sans';
+        }
+        
+        input {
+            text-align: center;
+        }
+
+
+        button{
+            background-color: rgb(46, 26, 101);
+            border: none;
+            border-radius: 20pt;
+            cursor: pointer;
+            padding: 10px 25px;
+            color: rgb(251, 251, 251);
+        }
+
+        ::placeholder{
+            font-weight: bold;
+        }
+
+
+    </style>
+    <link href="static/main.css" rel="stylesheet" type="text/css" media="all">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-primary"
+        style="background-color:#0694c6 !important; height: 80px; ">
+        <a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename = 'logo1.png') }} " height="60px"
+            width="275px"></a>        
+            <center>
+            <h2 style=" color:rgb(0, 0, 0); transform:translateX(250px); font-family: 'Open Sans';font-size: 40px; padding-left:150px;">CardioNephra Care - Your
+                Health Matters</h2>
+            </center>
+    </nav>
+<main>
+<br><br><br><br><br><br>
+<center><h3 style="color: rgb(46, 26, 101); font-weight: bolder;">{{info}}</center>
+    <div class="container" style="margin-bottom: 20px; padding-top: 20px; ">
+    <div class="box2">
+    <h1>Registration</h1>
+    <form id="form" action="/user_signup" method="post">
+        <input type="text" placeholder="Name" id = "name" type="text" pattern="[A-Za-z]+" title="Please Enter a Valid Name of Min. 3 Characters." maxlength="15" name="name" style="height:35px; width:420px; font-size:22px; margin-left: 17%" required/>
+        <input type="number" placeholder="Age" id="age" name="age" title="Please Enter Your Age" style="height:35px; width:420px; font-size:22px; margin-left: 17%" min="1" max="100" required/>
+        <select name="gender" title="Please Select your Gender." id="gender"  style="height:35px; width:420px; font-size:22px; margin-left: 17%;" required>
+              <option align="center" value="" disabled selected style="color:red; font-weight: bolder;">Gender</option>
+              <option align="center" value="Male">Male</option>
+              <option align="center" value="Female">Female</option>
+              <option align="center" value="Others">Others</option>
+            </optgroup>
+          </select> 
+        <input type="text" pattern="[0-9]{10}" maxlength="10" title="Please Enter a Valid Contact Number." placeholder="Contact number" id="phone" name="phone" style="height:35px; width:420px; font-size:22px; margin-left: 17%" required/> 
+        <input type="text" placeholder="Username" minlength="3" title="Username Must Be Atleast 3 Characters." id="username" name="username"style="height:35px; width:420px; font-size:22px; margin-left: 17%" maxlength="15" required/>
+        <input type="text" placeholder="Password" minlength="5" title="Password Must Be Atleast 5 Characters." name="password" id="password" style="height:35px; width:420px; font-size:22px; margin-left: 17%" maxlength="15" required/> 
+        <button id="signup" type="submit" value="SignUp" style=" margin-top: 25px; width: 120px; height:44px;font-size:20px;  margin-left: 42%;"> SignUp</button>
+    </form>
+    </div></div>
+</div>
+<center>
+ <h6 style="font-weight:bolder"> <div class="signup">
+Already have an account?
+    <a href="/login">Login</a>
+</div></h6>  
+    <center>
+    <form action="/">
+        <button type="submit" style=" width: 120px; height:44px;font-size:20px;  margin-left: 1%;">Back</button>
+    </form>
+    </center>
+</main>
+
+</body>
+</html>

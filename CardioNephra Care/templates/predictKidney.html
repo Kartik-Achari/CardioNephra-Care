@@ -1,0 +1,141 @@
+{% extends 'main.html' %}
+{% block content %}
+
+<head>
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            background: linear-gradient(to right,#0694c6,#8bffff,#0694c6);
+            font-family: 'Open Sans';
+        }
+
+        button{
+            background-color: rgb(46, 26, 101);
+            border: none;
+            border-radius: 20pt;
+            cursor: pointer;
+            padding: 15px 35px;
+            color: white;
+        }
+
+        .details{
+          float:left;
+          font-size: 16px;
+          font-weight: bolder;
+        }
+
+        .inputs{
+          float:left;
+          font-weight: bolder;
+        }
+
+    </style>
+    <script defer src="static/kidney2.js"></script>
+</head>
+
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-primary"
+    style="background-color:#09a2da  !important; height: 80px; ">
+    <a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename = 'logo1.png') }} " height="60px"
+            width="275px"></a>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <center>
+            <h2 style=" color: rgb(0, 0, 0); transform:translateX(250px);font-size: 40px; padding-left:150px;">CardioNephra Care - Your Health Matters</h2>
+        </center>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active"
+                style="padding: right 10px; color: black; font-size: 26px; font-weight: bold;">
+                <a href="{{ url_for('homePage') }}" class="nav-link" style="color: rgb(0, 0, 0)">Home |</a>
+            </li>
+            <li class="nav-item active" style="font-size: 26px; font-weight: bold;">
+                <a class="nav-link" href="{{ url_for('frontPage') }}" style="color: rgb(0, 0, 0)">Log Out</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="row" style="margin-bottom: 477px;">
+</head>
+  <div class="card card-body" style="border: 1px solid black; border-radius: 5px; margin-top: 10px; width: 100%; margin-left: 100px; margin-right: 100px;">
+        <div>
+            <p><img class="img1" src="static/logo1.png" style="width:50%; margin-left:28%;" ><p>
+         </div>
+         <center><h2 style="color: red;">Kidney Health Report</h2></center>
+           <hr style=" background-color:black;">
+
+      <p style="text-align: right; font-weight: bold;" id="date">
+        <script>
+          document.getElementById("date").innerHTML = Date();
+        </script>
+      </p>
+
+<div class="patient-details">
+      <div class="details">
+      <p>Patient Name:&nbsp;&nbsp;<span id="data_k19">data19</span></p>
+      <p>Age:&nbsp;&nbsp;<span id="data_k1">data1</span>&nbsp; years</br>
+      <p>Referred Doctor:&nbsp;&nbsp;<span id="data_k20">data20</span></p>
+</div>
+</div>
+<hr style=" background-color:black; border-width:100%;" >
+<div>
+<table class="inputs">
+  <tr><td style="color:rgb(46, 26, 101); font-weight: bolder; font-size: 22px; font-style:italic; ">Attributes </td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td style="color:rgb(46, 26, 101); font-weight: bolder;font-size: 22px; font-style:italic;">Inputs</td>
+    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td style="color:rgb(46, 26, 101); font-weight: bolder;font-size: 22px; font-style:italic;">Ref. Range</td></tr>
+
+    <tr><td></td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> <td></td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> <td></td></tr>
+
+<tr><td>Blood Pressure (mm/Hg)                </td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>  <span id="data_k2">data2</span> </td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td> <span>&nbsp;&nbsp;&nbsp;  90 - 120 </span></td></td>
+  <td rowspan="18"> 
+    {% if pred == 1 %}
+   <div class="card card-body alert alert-danger" style="color: red;font-size: 20px; margin-left: 77px; width:90%; margin-top: 30%;">
+       <center><p style="color:rgb(46, 26, 101);font-weight:bolder; font-size: larger;">RESULT<hr></p></center>
+       <center>That's a Worry!<br>Kidney Risk Detected!!</center>
+       <center><img class="img1" src="static/unhealthyKidney.png" style="width:130px; height:140px;"></center>
+       <center>Please Consult Your Doctor</center>
+   </div>
+   {% else %}
+   <div class="card card-body alert alert-success" style="color: rgb(71, 157, 87); font-size: 20px;margin-left: 90px; width:90%; margin-top: 30%;">
+       <center><p style="color:rgb(46, 26, 101);font-weight:bolder;font-size: larger;">RESULT<hr></p></center>
+       <center>Congratulations!<br>Kidney Is Healthy!!</center>
+       <center><img class="img1" src="static/healthyKidney.png" style="width:100px; height:130px;"></center>
+       <center>Maintain a Good Diet &<br>Exercise Regularly.</center>
+   </div>
+   {% endif %}
+ </td>
+</tr>
+<tr><td>Albumin                               </td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>  <span id="data_k3">data3</span> </td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td> <span>&nbsp;&nbsp;&nbsp;&nbsp; -------</span></td></tr>
+<tr><td>Sugar                                 </td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>  <span id="data_k4">data4</span> </td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td> <span>&nbsp;&nbsp;&nbsp;&nbsp; -------</span></td></tr>
+<tr><td>Red Blood Cells                       </td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>  <span id="data_k5">data5</span> </td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td> <span>&nbsp;&nbsp;&nbsp;&nbsp; -------</span></td></tr>
+<tr><td>Puss Cells                            </td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>  <span id="data_k6">data6</span> </td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td> <span>&nbsp;&nbsp;&nbsp;&nbsp; -------</span></td></tr>
+<tr><td>Puss Cell Clumps                      </td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>  <span id="data_k7">data7</span> </td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td> <span>&nbsp;&nbsp;&nbsp;&nbsp; -------</span></td></tr>
+<tr><td>Bacteria                              </td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>  <span id="data_k8">data8</span> </td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td> <span>&nbsp;&nbsp;&nbsp;&nbsp; -------</span></td></tr>
+<tr><td>Blood Glucose Random                  </td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>  <span id="data_k9">data9</span> </td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td> <span>&nbsp;&nbsp;&nbsp;  70 - 120 </span></td></tr>
+<tr><td>Blood Urea                            </td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>  <span id="data_k10">data10</span> </td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td> <span>&nbsp;&nbsp;&nbsp; 15 - 45 </span></td></tr>
+<tr><td>Serum Creatinine                      </td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>  <span id="data_k11">data11</span> </td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td> <span>&nbsp;&nbsp;&nbsp; 0.4 - 1.4 </span></td></tr>
+<tr><td>Potassium                             </td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>  <span id="data_k12">data12</span> </td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td> <span>&nbsp;&nbsp;&nbsp;  3.5 - 5.5 </span></td></tr>
+<tr><td>White Blood Cells Count               </td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>  <span id="data_k13">data13</span> </td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td> <span>&nbsp;&nbsp;4500 - 9500 </span></td></tr>
+<tr><td>Hypertension                          </td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>  <span id="data_k14">data14</span> </td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td> <span>&nbsp;&nbsp;&nbsp;&nbsp; -------</span></td></tr>
+<tr><td>Diabetes Mellitus                     </td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>  <span id="data_k15">data15</span> </td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td> <span>&nbsp;&nbsp;&nbsp;&nbsp; -------</span></td></tr>
+<tr><td>Coronary Artery Disease               </td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>  <span id="data_k16">data16</span> </td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td> <span>&nbsp;&nbsp;&nbsp;&nbsp; -------</span></td></tr>
+<tr><td>Pedal Edema                           </td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>  <span id="data_k17">data17</span> </td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td> <span>&nbsp;&nbsp;&nbsp;&nbsp; -------</span></td></tr>
+<tr><td>Anemia                                </td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>  <span id="data_k18">data18</span> </td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td> <span>&nbsp;&nbsp;&nbsp;&nbsp; -------</span></td></tr>
+</table>
+</div>
+  <hr style=" background-color:black;">
+</br>
+</br>
+</br>
+<div class="report-sign">
+  <div class="lab-incharge-sign">
+    <center>
+     <h5>Report By:&nbsp;<strong><span id="data_k21">data21</span></strong></h5> </br>
+  </center>
+  </div>
+</br>
+<center>
+  <button onclick="window.print()">Print Report</button>
+</center>
+</div>
+</div>
+{% endblock %}

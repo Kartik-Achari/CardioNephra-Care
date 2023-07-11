@@ -1,0 +1,84 @@
+<html lang="en">
+<head>
+    <title>CardioNephra Care - Your Health Matters</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sticky-footer/">
+    <style>
+        html,
+        body {
+                                  
+            display:flex;
+            flex-direction: column;
+            background: linear-gradient(to right,#0694c6,#8bffff,#0694c6);
+            font-family: 'Open Sans';
+        }
+        
+        input {
+            text-align: center;
+        }
+
+
+        button{
+            background-color: rgb(46, 26, 101);
+            border: none;
+            border-radius: 20pt;
+            cursor: pointer;
+            padding: 10px 25px;
+            color: rgb(251, 251, 251);
+        }
+
+        .signup{
+            color: black;
+            font-weight: bolder;
+            font-size: larger;
+        }
+        
+    </style>
+    <link href="static/main.css" rel="stylesheet" type="text/css" media="all">
+    <script src="static/home.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-primary"
+        style="background-color:   #0694c6!important; height: 80px; font-family: 'Open Sans'; ">
+        <a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename = 'logo1.png') }} " height="60px"
+            width="275px"></a>        
+            <center>
+            <h2 style=" color:rgb(0, 0, 0); transform:translateX(250px);font-size: 40px; padding-left:150px;">CardioNephra Care - Your
+                Health Matters</h2>
+            </center>
+    </nav>
+<br><br><br><br><br><br><br><br>
+<center>
+    <h3  style="color: rgb(255, 0, 0); font-weight: bold;">{{info}}</h3> 
+</center>
+<main>
+    <div class="container-fluid" style="margin-bottom: 20px; padding-top: 20px; font-family: 'Open Sans'; ">
+    <div class="box">
+        <h1>Log In</h1>
+        <form action="/user_login" method="post">
+          <input  type="text" title="Please Enter a Valid Username" name="username" id="username" placeholder="Username" style="height:35px; width:350px; font-size:22px; margin-left: 15%" required/>
+          <input type="password" name="password"  title="Please Enter a Valid Password" id="password" placeholder="Password" style="height:35px; width:350px; font-size:22px; margin-left: 15%" required/>
+          <br>
+          <button type="submit" class="button" value="Log In" onclick="getData_li()" style="margin-top: 25px; width: 120px; height:46px; font-size:20px;  margin-left: 38%;">Login</button>
+          <br>
+          <br>
+        </form>
+    </div>
+    </div>
+    <center>
+        <div class="signup">
+    New To CardioNephra Care?
+        <a href="/signup">SignUp</a>
+    </div>
+    <br><br>
+</center>
+<center>
+  <form action="/">
+      <button type="submit" style="width: 120px; height:50px; font-size:20px; margin-left: 1%;">Back</button>
+  </form>
+</center>   
+</main>
+</body>
+</html>
