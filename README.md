@@ -27,7 +27,6 @@ The Datasets Used for this Project were taken from <a href="https://www.kaggle.c
 
 ## Steps to Run the Website on your System
 
-==> Python was used for this Project.<br>
 - Clone or download the repo.
 - Open command prompt in the downloaded folder.
 - Install the Dependencies.
@@ -40,3 +39,7 @@ python app.py
 ```
 - Prompt returns: Running on http://localhost:5000
 - After sucessfully running flask server copy the url http://localhost:5000 prompted on the terminal, paste it in any default browser and run it.
+
+## Technologies Used
+
+
