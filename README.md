@@ -45,6 +45,8 @@ python app.py
 - Python
 - HTML, CSS, JavaScript
 
-## 
+## IDE Used
+
+- Visual Studio Code
 
 
