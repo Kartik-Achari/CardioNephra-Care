@@ -42,4 +42,9 @@ python app.py
 
 ## Technologies Used
 
+- Python
+- HTML, CSS, JavaScript
+
+## 
+
 
