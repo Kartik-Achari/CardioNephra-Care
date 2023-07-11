@@ -26,7 +26,7 @@ The Datasets Used for this Project were taken from <a href="https://www.kaggle.c
 
 ## Steps to Run the Website on your System
 
-==> Python Version 3.11 was used for this Project.<br>
+==> Python was used for this Project.<br>
 - Clone or download the repo.
 - Open command prompt in the downloaded folder.
 - Install the Dependencies.
